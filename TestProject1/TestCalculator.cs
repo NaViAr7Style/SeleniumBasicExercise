@@ -16,11 +16,15 @@ namespace TestProject1
         IWebElement calcBtn;
         IWebElement resetBtn;
         IWebElement divResult;
+        ChromeOptions options;
 
         [OneTimeSetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver();
+            options = new ChromeOptions();
+            options.AddArgument("headless");
+            driver = new ChromeDriver(options);
+
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Url = "https://calculatorhtml.onrender.com/";
 
